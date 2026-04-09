@@ -6,7 +6,7 @@ NURIE.AI is proud to present the "2026 Cross-Platform Innovation Awards." We inv
 ## 1. The Mission
 - **Obtain your Server-side API Key** via VaultSage (https://vaultsage.ai/).
 - **Build an innovative application** (Web, Mobile, Extension, or Desktop).
-- **Social Demo Requirement:** Submissions must include a demo video URL uploaded to YouTube or Instagram Reels using the mandatory hashtag `#vaultsage`.
+- **Social Links Requirement:** Submissions must include a social media post link highlighting your project, using the mandatory hashtag `#vaultsage`.
 
 ## 2. Participants & Team Size
 - Open to anyone living in **Taiwan** or **Korea**.
@@ -18,6 +18,7 @@ NURIE.AI is proud to present the "2026 Cross-Platform Innovation Awards." We inv
 - **Top 1:** 1x MacBook Pro
 - **Top 2:** 1x iPad
 - **Top 3~10:** $500 USD Coupon
+- **All Submitted Participants:** A verified **Certificate of Completion**. (This official certificate serves as a compelling addition to your professional resume or portfolio, demonstrating your hands-on experience in building AI-native applications!)
 
 ## 4. Key Dates
 - **Application Period:** April 10 ~ May 30
@@ -29,4 +30,14 @@ NURIE.AI is proud to present the "2026 Cross-Platform Innovation Awards." We inv
 - **45% Technical Execution:** Security, system stability, and feature completeness.
 - **40% Creativity:** Uniqueness and innovative application of the API.
 - **15% Business Potential:** Scalability and commercial viability.
+
+## 6. Critical Information Links
+- **Company Website:** [https://nurie.ai/en](https://nurie.ai/en)
+- **VaultSage URL:** [https://vaultsage.ai/](https://vaultsage.ai/)
+- **API Documentation:** [https://api.vaultsage.ai/docs](https://api.vaultsage.ai/docs)
+- **Registration Form:** [https://forms.gle/C3592Ju5k9ELdEoCA](https://forms.gle/C3592Ju5k9ELdEoCA)
+- **Submission Form:** [https://forms.gle/vvdMepK43uDxPVop9](https://forms.gle/vvdMepK43uDxPVop9)
+- **Co-founder LinkedIn:**
+  - Youngtae Do (Young D): [https://www.linkedin.com/in/young-d-b7583b59/](https://www.linkedin.com/in/young-d-b7583b59/)
+  - Suhee (Jess) Choi: [https://www.linkedin.com/in/suhee-jess-choi/](https://www.linkedin.com/in/suhee-jess-choi/)
 

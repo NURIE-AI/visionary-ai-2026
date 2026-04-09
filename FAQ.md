@@ -14,8 +14,8 @@ Welcome to the Visionary AI: NURIE.AI 2026 Cross-Platform Innovation Awards! Her
 **Q4: Does my application have to be a specific platform type?**  
 **A:** We encourage cross-platform innovation! You are welcome to build a Web App, Mobile App, Browser Extension, or Desktop Application—whichever best showcases your creativity and technical execution.
 
-**Q5: What are the rules for the Social Demo requirement?**  
-**A:** To successfully submit your project, you must record a demo video of your application in action. This video needs to be uploaded publicly to either **YouTube** or **Instagram Reels**, and you must include the mandatory hashtag `#vaultsage` in the title or description.
+**Q5: What are the rules for the Social Links requirement?**  
+**A:** To successfully submit your project, you must share your creation publicly on any social media platform. A demo video is not required; you simply need to post a link to your project and include the mandatory hashtag `#vaultsage` in your post.
 
 **Q6: What happens if I forget to register by April 30?**  
 **A:** We require participants to register by April 30 so we can understand the scale of the event and plan our resources accordingly. If you have missed this date, please reach out to the organizing team, though your final project submission must still be in by May 25.
