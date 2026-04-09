@@ -6,11 +6,11 @@ Are you ready to push the boundaries of Artificial Intelligence and showcase you
 
 **NURIE.AI** is incredibly proud to present the **2026 Cross-Platform Innovation Awards**! We are inviting developers, innovators, and creators to build secure, cross-platform applications leveraging the powerful **VaultSage Server-side API**.
 
-Whether you’re coding from scratch or using AI assistants to "vibe code" your vision into reality, we want to see what you can create!
+This is a true **AI-Friendly Competition**! You can participate by writing all the code yourself as a human, or you can use AI agents (like OpenClaw or Cursor) to do all the heavy lifting for you—both paths are highly encouraged! Whether you’re coding from scratch or using AI assistants to "vibe code" your vision into reality, we want to see what you can create!
 
 ## 🌟 Competition Highlights
 
-- **Prizes:** Compete for high-performance hardware including a **MacBook Pro** (1st Place), an **iPad** (2nd Place), and **$500 USD Coupons** (3rd-10th Place)!
+- **Prizes:** Compete for high-performance hardware including a **Mac mini** (Top 1~3, perfect for hosting your own AI agents!), an **iPad** for the exclusive "AI's Choice Award" (selected by NURIE.AI's AI!), and **$500 USD Coupons** (Top 4-10)!
 - **Resume Booster:** Every participant who successfully submits a project will receive a verified **Certificate of Completion**—a compelling addition to your professional resume or portfolio to prove your hands-on AI development experience.
 - **Total Creative Freedom:** Build an innovative Web App, Mobile App, Browser Extension, or Desktop Application.
 - **Showcase to the World:** Share your creation with the developer community by posting a link to your project on any social media platform using the mandatory `#vaultsage` hashtag.

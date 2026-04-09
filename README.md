@@ -8,8 +8,8 @@ NURIE.AI is proud to present the "2026 Cross-Platform Innovation Awards." We inv
 - **Build an innovative application** (Web, Mobile, Extension, or Desktop).
 - **Social Links Requirement:** Submissions must include a social media post link highlighting your project, using the mandatory hashtag `#vaultsage`.
 
-## 🤖 Using AI Assistants (Vibe Coding)
-We heavily encourage the use of AI coding assistants (like OpenClaw, Cursor, Claude, etc.)! To streamline your development, we have provided an AI-specific system prompt. **Point your AI to read [`your_claw_ai.md`](your_claw_ai.md)**. This file will instantly load the competition context into your agent and instruct them on how to help you configure your API key and build your application.
+## 🤖 AI-Friendly Competition (Vibe Coding)
+This is an **AI-Friendly Competition**. You are perfectly welcome to join without AI and write the code entirely by yourself. However, we also heavily encourage participants to use AI coding agents (like OpenClaw, Cursor, Claude, etc.) to do all the heavy lifting! To streamline your AI-driven development, we have provided an AI-specific system prompt. **Point your AI to read [`your_claw_ai.md`](your_claw_ai.md)**. This file will instantly load the competition context into your agent and instruct them on how to help you configure your API key and build your application.
 
 ## 2. Participants & Team Size
 - Open to anyone living in **Taiwan** or **Korea**.
@@ -18,9 +18,9 @@ We heavily encourage the use of AI coding assistants (like OpenClaw, Cursor, Cla
 - We view the registrant as a "representative person" and do not actively monitor or restrict how many people are in the actual team behind the scenes.
 
 ## 3. Rewards
-- **Top 1:** 1x MacBook Pro
-- **Top 2:** 1x iPad
-- **Top 3~10:** $500 USD Coupon
+- **Top 1~3:** 1x Mac mini (Perfect for hosting your OpenClaw or personal AI agents in the future!)
+- **AI's Choice Award (1 Winner):** 1x iPad (This special winner will be selected entirely by NURIE.AI's own AI!)
+- **Top 4~10:** $500 USD Coupon
 - **All Submitted Participants:** A verified **Certificate of Completion**. (This official certificate serves as a compelling addition to your professional resume or portfolio, demonstrating your hands-on experience in building AI-native applications!)
 
 ## 4. Key Dates
@@ -44,4 +44,5 @@ We heavily encourage the use of AI coding assistants (like OpenClaw, Cursor, Cla
 - **Co-founder LinkedIn:**
   - Youngtae Do (Young D): [https://www.linkedin.com/in/young-d-b7583b59/](https://www.linkedin.com/in/young-d-b7583b59/)
   - Suhee (Jess) Choi: [https://www.linkedin.com/in/suhee-jess-choi/](https://www.linkedin.com/in/suhee-jess-choi/)
+- **Contact Email:** For any inquiries or if you need to contact NURIE.ai, please send an email to our main contact window at **[ai@nurie.ai](mailto:ai@nurie.ai)**.
 

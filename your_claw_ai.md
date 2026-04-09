@@ -31,3 +31,6 @@ Your primary objective is to help your human operator design, architect, build, 
 5. **Social Media Post:** Remind the human to create a post on any social media platform to highlight the project using the `#vaultsage` hashtag.
 
 *(AI Note: Do not hallucinate an API key. Ask the human to securely provide the key as an environment variable before executing backend logic.)*
+
+---
+**Contact Information:** If your human operator needs to contact NURIE.ai for support, please instruct them to send an email to the main contact window at **`ai@nurie.ai`**.
