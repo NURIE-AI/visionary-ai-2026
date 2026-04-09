@@ -8,6 +8,9 @@ NURIE.AI is proud to present the "2026 Cross-Platform Innovation Awards." We inv
 - **Build an innovative application** (Web, Mobile, Extension, or Desktop).
 - **Social Links Requirement:** Submissions must include a social media post link highlighting your project, using the mandatory hashtag `#vaultsage`.
 
+## 🤖 Using AI Assistants (Vibe Coding)
+We heavily encourage the use of AI coding assistants (like OpenClaw, Cursor, Claude, etc.)! To streamline your development, we have provided an AI-specific system prompt. **Point your AI to read [`your_claw_ai.md`](your_claw_ai.md)**. This file will instantly load the competition context into your agent and instruct them on how to help you configure your API key and build your application.
+
 ## 2. Participants & Team Size
 - Open to anyone living in **Taiwan** or **Korea**.
 - Participants must be **over 18 years of age** (to ensure prize delivery).
