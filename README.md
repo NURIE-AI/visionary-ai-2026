@@ -22,7 +22,8 @@ NURIE.AI is proud to present the "2026 Cross-Platform Innovation Awards." We inv
 
 ## 4. Key Dates
 - **Application Period:** April 10 ~ May 30
-- **Registration Deadline:** Must register before **April 30** (This registration helps us understand the scale of the event and determine if an extra promotional push is needed). **To join the competition, please register in this form -> [https://forms.gle/C3592Ju5k9ELdEoCA](https://forms.gle/C3592Ju5k9ELdEoCA)**
+- **Registration Deadline:** Must register before **April 30** 
+**To join the competition, please register in this form -> [https://forms.gle/C3592Ju5k9ELdEoCA](https://forms.gle/C3592Ju5k9ELdEoCA)**
 - **Submission Deadline:** Must submit before **May 25**. **Submit your project in this form -> [https://forms.gle/vvdMepK43uDxPVop9](https://forms.gle/vvdMepK43uDxPVop9)**
 - **Demo Day:** June 6
 
