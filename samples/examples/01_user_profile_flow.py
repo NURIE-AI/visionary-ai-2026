@@ -3,7 +3,6 @@
 User flow: account settings — fetch profile, update display name, fetch profile again to verify.
 """
 
-import json
 import os
 import sys
 
@@ -11,7 +10,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import requests
 
-from common_api import require_api_key
+from common_api import print_json, print_phase_banner, require_api_key, run_with_spinner
 
 API_BASE_URL = "https://api.vaultsage.ai/api/v1"
 API_KEY = "YOUR_API_KEY"
@@ -25,32 +24,30 @@ def main() -> None:
     headers_patch = {"x-api-key": API_KEY, "Content-Type": "application/json"}
     url = f"{API_BASE_URL}/users/me"
 
-    # ==========================================
-    # 1. Fetch current user (GET /users/me)
-    # ==========================================
-    print("Fetching profile (before update)...")
-    r1 = requests.get(url, headers=headers_get, timeout=60)
-    r1.raise_for_status()
-    print("\n--- Profile (before) ---")
-    print(json.dumps(r1.json(), indent=2))
+    def get_me() -> requests.Response:
+        r = requests.get(url, headers=headers_get, timeout=60)
+        r.raise_for_status()
+        return r
 
-    # ==========================================
-    # 2. Update display name (PATCH /users/me)
-    # ==========================================
-    print(f"\nUpdating display name to {NEW_DISPLAY_NAME!r}...")
-    r2 = requests.patch(url, headers=headers_patch, json={"full_name": NEW_DISPLAY_NAME}, timeout=60)
-    r2.raise_for_status()
-    print("\n--- PATCH response ---")
-    print(json.dumps(r2.json(), indent=2))
+    print_phase_banner("Profile", "Fetch current user (GET /users/me)")
+    r1 = run_with_spinner("GET /users/me (before update)", get_me)
+    print("\n[Result] Profile (before update)")
+    print_json(r1.json())
 
-    # ==========================================
-    # 3. Fetch profile again (GET /users/me)
-    # ==========================================
-    print("\nFetching profile (after update)...")
-    r3 = requests.get(url, headers=headers_get, timeout=60)
-    r3.raise_for_status()
-    print("\n--- Profile (after) ---")
-    print(json.dumps(r3.json(), indent=2))
+    def patch_me() -> requests.Response:
+        r = requests.patch(
+            url,
+            headers=headers_patch,
+            json={"full_name": NEW_DISPLAY_NAME},
+            timeout=60,
+        )
+        r.raise_for_status()
+        return r
+
+    print_phase_banner("Profile", f"Update display name to {NEW_DISPLAY_NAME!r} (PATCH /users/me)")
+    r2 = run_with_spinner("PATCH /users/me", patch_me)
+    print("\n[Result] PATCH /users/me response")
+    print_json(r2.json())
 
 
 if __name__ == "__main__":

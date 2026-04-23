@@ -5,8 +5,8 @@ What this module provides
 -------------------------
 ``require_api_key`` — exit if the script still has a placeholder key.
 
-``get_json`` / ``post_json`` — small ``requests`` wrappers with the ``x-api-key``
-header and consistent error handling.
+``get_json`` / ``post_json`` / ``patch_json`` — small ``requests`` wrappers with the
+``x-api-key`` header and consistent error handling.
 
 ``upload_local_file`` — multipart ``POST .../files/`` for a local file (path from each script’s settings).
 
@@ -19,17 +19,26 @@ summary and snapshot tasks finish (strict; use after normal uploads).
 ``task_summary_status``; 60s cap then continue (legacy ``sample_file.py`` behaviour).
 
 ``print_json`` — pretty-print any JSON-serialisable value.
+
+``run_with_spinner`` — run a blocking callable while showing an inline ``...`` animation.
+
+``print_phase_banner`` — print a framed phase header (same layout as ``08`` / ``09`` tutorials).
+
+``print_chat_turn`` — print a user/VaultSage “chat window” block (turn *n* / *total*).
 """
 
 from __future__ import annotations
 
 import json
 import sys
+import threading
 import time
 from pathlib import Path
-from typing import Any, Final
+from typing import Any, Callable, Final, TypeVar
 
 import requests
+
+_T = TypeVar("_T")
 
 _BAD_API_KEY_PLACEHOLDERS: Final[frozenset[str]] = frozenset(
     {"nvpk_REPLACE_ME", "YOUR_API_KEY", "YOUR API KEY", ""},
@@ -99,9 +108,85 @@ def post_json(api_base_url: str, api_key: str, path: str, body: dict[str, Any]) 
     return response.json()
 
 
+def patch_json(api_base_url: str, api_key: str, path: str, body: dict[str, Any]) -> Any:
+    """PATCH JSON to ``path`` (leading slash) under ``api_base_url``."""
+    url = f"{api_base_url}{path}"
+    response = requests.patch(
+        url,
+        headers=_headers_json(api_key),
+        json=body,
+        timeout=_TIMEOUT_POST,
+    )
+    if not response.ok:
+        _http_fail(path, response)
+    return response.json()
+
+
 def print_json(data: Any) -> None:
     """Print *data* as indented JSON (for tutorial output)."""
     print(json.dumps(data, indent=2, default=str))
+
+
+PHASE_BANNER_WIDTH: Final[int] = 72
+
+
+def print_phase_banner(phase: str, detail: str) -> None:
+    """
+    Print a three-line section frame (same style as ``08_chat_multi_turn`` / ``09_smart_upload_image_chat``).
+
+    *phase* is a short label (shown uppercase); *detail* explains the step on one line.
+    """
+    w = PHASE_BANNER_WIDTH
+    bar = "=" * w
+    print("\n" + bar)
+    print(f" {phase.strip().upper()} — {detail}")
+    print(bar)
+
+
+# ---------------------------------------------------------------------------
+# Console UX (tutorial scripts)
+# ---------------------------------------------------------------------------
+
+
+def print_chat_turn(*, turn: int, total: int, role: str, text: str, width: int = PHASE_BANNER_WIDTH) -> None:
+    """Print one framed block like a chat thread line (role is e.g. ``User`` or ``VaultSage``)."""
+    label = f"Turn {turn} / {total}  |  {role.strip().upper()}"
+    bar = "=" * width
+    print(f"\n{bar}")
+    print(f" {label}")
+    print("-" * width)
+    body = text.strip() if text.strip() else "[empty message]"
+    for line in body.splitlines():
+        print(f" {line}")
+    print(bar)
+
+
+def run_with_spinner(message: str, func: Callable[[], _T]) -> _T:
+    """
+    Run *func* while printing ``message`` with a cycling ``.`` animation on one line.
+
+    Clears the spinner line when *func* returns or raises.
+    """
+    stop = threading.Event()
+
+    def _spin() -> None:
+        step = 0
+        pad = max(len(message) + 8, 24)
+        while not stop.wait(0.22):
+            step += 1
+            dots = "." * (1 + (step % 3))
+            sys.stdout.write(("\r" + message + " " + dots).ljust(pad))
+            sys.stdout.flush()
+
+    thread = threading.Thread(target=_spin, daemon=True)
+    thread.start()
+    try:
+        return func()
+    finally:
+        stop.set()
+        thread.join(timeout=3.0)
+        sys.stdout.write("\r" + " " * 120 + "\r")
+        sys.stdout.flush()
 
 
 # ---------------------------------------------------------------------------
@@ -229,11 +314,13 @@ def wait_for_file_processing(
     *,
     poll_interval_sec: float = 2.0,
     timeout_sec: float = 300.0,
+    quiet: bool = False,
 ) -> dict[str, Any]:
     """
     Poll until summary **and** snapshot leave pending/processing (UI “file ready”).
 
     On timeout or missing file, the process exits with an error.
+    If *quiet* is True, do not print per-poll status lines (use with ``run_with_spinner``).
     """
     deadline = time.monotonic() + timeout_sec
     last: dict[str, Any] = {}
@@ -250,13 +337,14 @@ def wait_for_file_processing(
             print("Error: File missing or not accessible for processing status.")
             sys.exit(1)
 
-        summary = last["task_summary_status"]
-        snapshot = last["task_snapshot_status"]
-        progress = last.get("processing_progress")
-        print(
-            f"  status: summary={summary} snapshot={snapshot} progress={progress}",
-            flush=True,
-        )
+        if not quiet:
+            summary = last["task_summary_status"]
+            snapshot = last["task_snapshot_status"]
+            progress = last.get("processing_progress")
+            print(
+                f"  status: summary={summary} snapshot={snapshot} progress={progress}",
+                flush=True,
+            )
 
         if _strict_processing_done(last):
             return last
@@ -274,15 +362,18 @@ def wait_summary_status_relaxed(
     *,
     max_wait_seconds: float = 60.0,
     poll_interval_sec: float = 2.0,
+    quiet: bool = False,
 ) -> None:
     """
     Poll only ``task_summary_status``; stop on completed/failed or after *max_wait_seconds*.
 
     Unlike ``wait_for_file_processing``, a timeout **does not** exit the process —
     the caller may still proceed (e.g. to chat), matching legacy ``sample_file.py``.
+    If *quiet* is True, suppress all internal prints (pair with ``run_with_spinner``).
     """
     deadline = time.monotonic() + max_wait_seconds
-    print("Waiting for background AI image extraction to complete...")
+    if not quiet:
+        print("Waiting for background AI image extraction to complete...")
 
     while time.monotonic() < deadline:
         data = _post_processing_status(api_base_url, api_key, [file_id])
@@ -290,14 +381,17 @@ def wait_summary_status_relaxed(
         if rows:
             summary = rows[0].get("task_summary_status")
             if summary == "completed":
-                print("Image content successfully extracted!")
+                if not quiet:
+                    print("Image content successfully extracted!")
                 return
             if summary == "failed":
-                print(
-                    "Image extraction failed. The chat won't be able to see the image content.",
-                )
+                if not quiet:
+                    print(
+                        "Image extraction failed. The chat won't be able to see the image content.",
+                    )
                 return
 
         time.sleep(poll_interval_sec)
 
-    print("Timeout waiting for image processing. Proceeding anyway.")
+    if not quiet:
+        print("Timeout waiting for image processing. Proceeding anyway.")

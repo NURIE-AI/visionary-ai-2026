@@ -10,7 +10,14 @@ from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from common_api import print_json, require_api_key, upload_local_file, wait_for_file_processing
+from common_api import (
+    print_json,
+    print_phase_banner,
+    require_api_key,
+    run_with_spinner,
+    upload_local_file,
+    wait_for_file_processing,
+)
 
 # =============================================================================
 # Base settings
@@ -25,21 +32,24 @@ SAMPLE_UPLOAD_PATH = Path(__file__).resolve().parent / SAMPLE_UPLOAD_FILENAME
 def main() -> None:
     require_api_key(API_KEY)
 
-    # ==========================================
-    # 1. Upload (POST /files/)
-    # ==========================================
-    print(f"Uploading {SAMPLE_UPLOAD_FILENAME!r}...")
-    up = upload_local_file(API_BASE_URL, API_KEY, SAMPLE_UPLOAD_PATH)
-    print_json(up)
+    print_phase_banner("Upload", "Send file to VaultSage (POST /files/)")
+    print(f"\n[Upload] Sending {SAMPLE_UPLOAD_FILENAME!r}…")
+    up = run_with_spinner(
+        "POST /files/ (multipart)",
+        lambda: upload_local_file(API_BASE_URL, API_KEY, SAMPLE_UPLOAD_PATH),
+    )
     file_id = str(up["file_id"])
-    print(f"Uploaded file id: {file_id}")
+    print(f"[Upload] file_id={file_id}")
+    print("\n[Result] Upload response")
+    print_json(up)
 
-    # ==========================================
-    # 2. Poll processing status (POST /files/processing-status)
-    # ==========================================
-    print("Waiting for background processing (summary + snapshot)...")
-    final = wait_for_file_processing(API_BASE_URL, API_KEY, file_id)
-    print("\n--- Final processing row ---")
+    print_phase_banner("Waiting", "VaultSage is processing the uploaded file (background jobs)")
+    final = run_with_spinner(
+        "Polling processing status (summary + snapshot)",
+        lambda: wait_for_file_processing(API_BASE_URL, API_KEY, file_id, quiet=True),
+    )
+    print("\n[Wait] File processing finished — showing last status row.\n")
+    print("\n[Result] Final processing row")
     print_json(final)
 
 
