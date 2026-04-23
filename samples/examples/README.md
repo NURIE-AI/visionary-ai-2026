@@ -2,8 +2,6 @@
 
 These scripts demonstrate **end-to-end flows** similar to the web app (upload → wait for processing → next action), not isolated HTTP calls. Each script uses `API_BASE_URL` including `/api/v1` and the **`x-api-key`** header. Create a key under **Settings → API Keys**, replace `YOUR_API_KEY` in each script, install [requests](https://requests.readthedocs.io/) (`python -m pip install requests`), and run from this directory, e.g. `python 03_upload_file.py` or `python 06_search_files.py`. Default host is production **`https://api.vaultsage.ai/api/v1`**; for a self-hosted deployment, change `API_BASE_URL` to your origin + `/api/v1`. Endpoint reference: [VaultSage Public API docs](https://api.vaultsage.ai/docs#/).
 
-The **Smart Upload + chat** flow that used to live only in [`samples/sample_file.py`](../sample_file.py) is now **[`09_smart_upload_image_chat.py`](09_smart_upload_image_chat.py)**; `sample_file.py` delegates to that script so there is a single implementation.
-
 Shared helpers live in **`common_api.py`** (`get_json` / `post_json`, `upload_local_file`, `smart_upload_file`, `wait_for_file_processing` vs `wait_summary_status_relaxed`, `print_json`, …). Each upload script sets **`SAMPLE_UPLOAD_FILENAME`** / **`SAMPLE_UPLOAD_PATH`** at the top; replace **[`test1.png`](test1.png)** or change that constant to use another file (optional copy at [`../test1.png`](../test1.png)).
 
 **Note:** Personal API keys cannot call `/api/v1/users/me/api-keys` (manage keys only in the UI).
