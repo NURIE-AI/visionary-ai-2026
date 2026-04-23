@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-User flow: account settings — fetch profile, update display name, fetch profile again to verify.
+User flow: update user profile — GET /users/me, PATCH display name, print JSON responses.
 """
 
 import os

@@ -132,7 +132,7 @@ PHASE_BANNER_WIDTH: Final[int] = 72
 
 def print_phase_banner(phase: str, detail: str) -> None:
     """
-    Print a three-line section frame (same style as ``08_chat_multi_turn`` / ``09_smart_upload_image_chat``).
+    Print a three-line section frame (same style as ``08_chat_with_file`` / ``09_smart_upload_with_chat``).
 
     *phase* is a short label (shown uppercase); *detail* explains the step on one line.
     """

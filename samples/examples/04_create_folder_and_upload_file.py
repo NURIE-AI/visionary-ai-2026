@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-User flow: create a folder under root, upload a sample image into that folder, then wait for processing
-(same upload + poll pipeline as 03, with directory_id targeting the new folder).
+User flow: create folder and upload file — new directory under root, upload sample image into it,
+then poll processing (same pipeline as ``03_upload_file.py``, with ``directory_id`` set).
 """
 
 import os
@@ -30,7 +30,7 @@ API_KEY = "YOUR_API_KEY"
 SAMPLE_UPLOAD_FILENAME = "test1.png"
 SAMPLE_UPLOAD_PATH = Path(__file__).resolve().parent / SAMPLE_UPLOAD_FILENAME
 # Distinct name so learners can spot this script's folder in the VaultSage UI.
-FOLDER_NAME = "Example 04 - create_folder_and_upload"
+FOLDER_NAME = "Example 04 - create_folder_and_upload_file"
 
 
 def main() -> None:

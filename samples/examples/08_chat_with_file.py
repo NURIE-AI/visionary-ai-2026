@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """
-User flow: Ask VaultSage with file — upload → wait → first chat turn (with file) → follow-up in same thread
-→ list saved chats. The first persisted turn covers what a separate single-turn example would do;
-stop after step 3 if you only want one reply. For **smart-upload** + relaxed processing poll, use
-`09_smart_upload_image_chat.py`.
+Chat with file: upload → wait for processing → first persisted chat turn with ``file_ids`` → follow-up
+in the same thread. (Optional list-chats block is commented in the script.) For **smart-upload** plus
+relaxed summary polling, use `09_smart_upload_with_chat.py`.
 """
 
 import os

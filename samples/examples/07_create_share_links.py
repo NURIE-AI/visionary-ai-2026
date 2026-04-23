@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
-Share links tutorial: create a share from an uploaded file, then list what you own — or list only.
+Create share links: upload sample file → wait for processing → POST /share/ → GET /share/user-shares,
+or list-only mode.
 
-- Default (LIST_ONLY = False): upload sample file → wait for processing → POST /share/ → GET /share/user-shares
-- Set LIST_ONLY = True: only GET /share/user-shares (refresh Shared links without creating a new share)
+- Default (LIST_ONLY = False): full create flow above
+- LIST_ONLY = True: only GET /share/user-shares (refresh without creating a new share)
 """
 
 import os

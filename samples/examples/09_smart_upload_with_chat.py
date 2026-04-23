@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-User flow: Smart Upload an image → poll processing (summary-only, relaxed timeout) → one chat turn.
-This is the canonical numbered tutorial for the flow previously documented only in samples/sample_file.py.
+Smart upload with chat: POST /smart-upload/ for one image → poll ``task_summary_status`` only (60s cap,
+then continue) → one ``POST /chat/message/v2`` turn with ``file_ids``. Canonical replacement for the
+legacy ``samples/sample_file.py`` story.
 """
 
 import os

@@ -2,7 +2,7 @@
 """
 User flow: search VaultSage by keyword only (no upload in this script).
 
-Other tutorials already call GET /files/ to list a folder (e.g. ``04_create_folder_and_upload.py``,
+Other tutorials already call GET /files/ to list a folder (e.g. ``04_create_folder_and_upload_file.py``,
 ``05_move_file_to_folder.py``); there is no separate list-only script.
 """
 
@@ -30,7 +30,7 @@ def main() -> None:
     print(
         "\n[Note] This script only runs search. For meaningful hits on the default keyword "
         f"{SEARCH_TOKEN!r} (e.g. filenames like {SAMPLE_UPLOAD_FILENAME!r}), ensure VaultSage "
-        "already has that file: run `03_upload_file.py` or `04_create_folder_and_upload.py`, or "
+        "already has that file: run `03_upload_file.py` or `04_create_folder_and_upload_file.py`, or "
         f"upload {SAMPLE_UPLOAD_FILENAME!r} in the UI and wait for processing, then run this "
         "script again.",
     )
