@@ -25,7 +25,7 @@ This is an **AI-Friendly Competition**. You are perfectly welcome to join withou
 
 ## 4. Key Dates
 - **Application Period:** April 10 ~ May 30
-- **Registration Deadline:** Must register before **April 30** 
+- **Registration Deadline:** Must register before **May 15** 
 **To join the competition, please register in this form -> [https://forms.gle/C3592Ju5k9ELdEoCA](https://forms.gle/C3592Ju5k9ELdEoCA)**
 - **Submission Deadline:** Must submit before **May 25**. **Submit your project in this form -> [https://forms.gle/vvdMepK43uDxPVop9](https://forms.gle/vvdMepK43uDxPVop9)**
 - **Demo Day:** June 6
