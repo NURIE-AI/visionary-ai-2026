@@ -1,0 +1,25 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    networks:
+      - nurie-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    # Load NURIE_* from backend/.env (copy from backend/.env.example before first compose up).
+    env_file:
+      - ./backend/.env
+    networks:
+      - nurie-network
+
+networks:
+  nurie-network:
+    driver: bridge
